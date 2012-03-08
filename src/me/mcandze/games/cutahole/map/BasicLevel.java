@@ -84,65 +84,66 @@ public class BasicLevel implements Level{
 	}
 	
 	private boolean checkCollision(Entity entity, Axis axis, int move, boolean jump){
-		try {
-		Location l = entity.getLocation();
-		if (axis == Axis.X_AXIS){
-			for (Entity e: getActiveEntities()){
-				if (e == entity){
-					System.out.println("self");
-					continue;
-				}
-				Location ll = e.getLocation();
-				if (ll.getX() == l.getX() + move && ll.getY() == l.getY()){
-					System.out.println("llx: " + ll.getX() + " lx: " + l.getX() + " move: " + move);
-					return false;
-				}
-			}
-			System.out.println("lx: " + l.getX() + " move: " + move);
-			TileRow tileRow = getTileRow(l.getY());
-			Tile tile = tileRow.tiles[l.getX() + move];
-			if (tile.getType() == Type.SOLID){
-				System.out.println("tile (x) not good");
-				return false;
-			}
-//			Tile[][] tileRows = getTiles();
-//			Tile[] tileRow = tileRows[l.getY()];
-//			Tile tile = tileRow[l.getX() + move];
+		return LevelUtils.checkCollision(this, entity, axis, move, jump);
+//		try {
+//		Location l = entity.getLocation();
+//		if (axis == Axis.X_AXIS){
+//			for (Entity e: getActiveEntities()){
+//				if (e == entity){
+//					System.out.println("self");
+//					continue;
+//				}
+//				Location ll = e.getLocation();
+//				if (ll.getX() == l.getX() + move && ll.getY() == l.getY()){
+//					System.out.println("llx: " + ll.getX() + " lx: " + l.getX() + " move: " + move);
+//					return false;
+//				}
+//			}
+//			System.out.println("lx: " + l.getX() + " move: " + move);
+//			TileRow tileRow = getTileRow(l.getY());
+//			Tile tile = tileRow.tiles[l.getX() + move];
 //			if (tile.getType() == Type.SOLID){
 //				System.out.println("tile (x) not good");
 //				return false;
 //			}
-		} else {
-			for (Entity e: getActiveEntities()){
-				if (e == entity){
-					System.out.println("self");
-					continue;
-				}
-				Location ll = e.getLocation();
-				if (ll.getY() == l.getY() + move && ll.getX() == l.getX()){
-					System.out.println("lly: " + ll.getY() + " ly: " + l.getY() + " move: " + move);
-					return false;
-				}
-			}
-			System.out.println("ly: " + l.getY() + " move: " + move + "new y: " + (move + l.getY()));
-			TileRow tileRow = getTileRow(l.getY() + move);
-			Tile tile = tileRow.tiles[l.getX()];
-			if (tile.getType() == Type.SOLID){
-				System.out.println("tile (x) not good");
-				return false;
-			}
-//			Tile[][] tileRows = getTiles();
-//			Tile[] tileRow = tileRows[l.getY() + move];
-//			Tile tile = tileRow[l.getX()];
+////			Tile[][] tileRows = getTiles();
+////			Tile[] tileRow = tileRows[l.getY()];
+////			Tile tile = tileRow[l.getX() + move];
+////			if (tile.getType() == Type.SOLID){
+////				System.out.println("tile (x) not good");
+////				return false;
+////			}
+//		} else {
+//			for (Entity e: getActiveEntities()){
+//				if (e == entity){
+//					System.out.println("self");
+//					continue;
+//				}
+//				Location ll = e.getLocation();
+//				if (ll.getY() == l.getY() + move && ll.getX() == l.getX()){
+//					System.out.println("lly: " + ll.getY() + " ly: " + l.getY() + " move: " + move);
+//					return false;
+//				}
+//			}
+//			System.out.println("ly: " + l.getY() + " move: " + move + "new y: " + (move + l.getY()));
+//			TileRow tileRow = getTileRow(l.getY() + move);
+//			Tile tile = tileRow.tiles[l.getX()];
 //			if (tile.getType() == Type.SOLID){
-//				System.out.println("tile (y) not good");
+//				System.out.println("tile (x) not good");
 //				return false;
 //			}
-		}
-		return true;
-		} catch (Exception e){
-			return false;
-		}
+////			Tile[][] tileRows = getTiles();
+////			Tile[] tileRow = tileRows[l.getY() + move];
+////			Tile tile = tileRow[l.getX()];
+////			if (tile.getType() == Type.SOLID){
+////				System.out.println("tile (y) not good");
+////				return false;
+////			}
+//		}
+//		return true;
+//		} catch (Exception e){
+//			return false;
+//		}
 	}
 	
 	public void render() throws LocationOutOfBoundsException{
