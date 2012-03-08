@@ -85,7 +85,9 @@ public class NonCollidingRandomAI implements EntityAI{
 		for (Direction d: exempt){
 			list.remove(d);
 		}
-		
+		if (list.size() == 0){
+			return null;
+		}
 		int toReturn = random.nextInt(list.size());
 		int i = 0;
 		for (Direction d: list){
