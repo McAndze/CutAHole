@@ -5,10 +5,10 @@ import me.mcandze.games.cutahole.location.Location;
 public class EntityMonster implements Entity {
 	protected Location location;
 	protected final char c = '$';
-	protected EntityAI ai;
+	protected NonCollidingRandomAI ai;
 	
 	public EntityMonster(){
-		ai = new AIMonster(this);
+		ai = new NonCollidingRandomAI(this);
 	}
 	
 	@Override
